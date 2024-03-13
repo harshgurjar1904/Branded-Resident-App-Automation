@@ -7,6 +7,8 @@ import org.digivalet.Utils.ResidentAppUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
+import javax.mail.MessagingException;
+
 public class LoginPage extends ResidentAppUtils {
     AndroidDriver driver;
     public LoginPage(AndroidDriver driver) {
@@ -37,8 +39,10 @@ public class LoginPage extends ResidentAppUtils {
         loginButtonLocator.click();
     }
 
-    public void sendOTP() throws InterruptedException {
-        String otp="258963";
+    public void sendOTP() throws InterruptedException, MessagingException {
+        OTPReader otpdriver= new OTPReader();
+        String otp=otpdriver.readOTPFromEmail();
+        System.out.println("Otp "+otp);
         otpFieldLocator.sendKeys(otp);
         Thread.sleep(6000);
     }

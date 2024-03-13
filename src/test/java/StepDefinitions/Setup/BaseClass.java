@@ -31,24 +31,24 @@ public class BaseClass extends AppiumUtils {
 	@BeforeClass
 	public void configorAppium() throws IOException {
 
-				Properties prop=new Properties();
-				FileInputStream fis= new FileInputStream(System.getProperty("user.dir")+"\\Resources\\data.properties");
-				prop.load(fis);
-				String ipAddress=prop.getProperty("ipAddress");
-				int portNo=Integer.parseInt(prop.getProperty("portNo"));
-				String systemUserName=prop.getProperty("systenUserName1");
-				String deviceName=prop.getProperty("deviceName1");
-				int duration=Integer.parseInt(prop.getProperty("duration"));
-				String appPath=System.getProperty("user.dir")+"\\Resources\\base.apk";
+		Properties prop=new Properties();
+		FileInputStream fis= new FileInputStream("Resources/data.properties");
+		prop.load(fis);
+		String ipAddress=prop.getProperty("ipAddress");
+		int portNo=Integer.parseInt(prop.getProperty("portNo"));
+		String deviceName=prop.getProperty("deviceName1");
+		int duration=Integer.parseInt(prop.getProperty("duration"));
+		String appPath="Resources/base.apk";
+		String mainPath=prop.getProperty("mainpath");
 
 
-				service=startAppiumServer(systemUserName,ipAddress,portNo);
-				UiAutomator2Options option= new UiAutomator2Options();
-				option.setDeviceName(deviceName); 				
-				option.setApp(appPath);
-				option.autoGrantPermissions();
-				driver= new AndroidDriver(service.getUrl(), option);
-				driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(duration));
+		service=startAppiumServer(mainPath,ipAddress,portNo);
+		UiAutomator2Options option= new UiAutomator2Options();
+		option.setDeviceName(deviceName);
+		option.setApp(appPath);
+		option.autoGrantPermissions();
+		driver= new AndroidDriver(service.getUrl(), option);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(duration));
 
 	}
 	

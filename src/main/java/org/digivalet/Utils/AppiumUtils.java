@@ -28,9 +28,10 @@ public class AppiumUtils extends AbstractTestNGCucumberTests {
 	}
 
 
-	public static AppiumDriverLocalService startAppiumServer(String systemUserName, String ipAddress, int portNO) {
+
+	public static AppiumDriverLocalService startAppiumServer(String mainPath,String ipAddress, int portNO) {
 		//below code is used to start the appium server through code
-		AppiumDriverLocalService service= new AppiumServiceBuilder().withAppiumJS(new File("C:\\Users\\"+systemUserName+"\\AppData\\Roaming\\npm\\node_modules\\appium\\build\\lib\\main.js")).withIPAddress(ipAddress).usingPort(portNO).build();
+		AppiumDriverLocalService service= new AppiumServiceBuilder().withAppiumJS(new File(mainPath)).withIPAddress(ipAddress).usingPort(portNO).build();
 		service.start(); //start the server
 		return service;
 	}

@@ -4,6 +4,8 @@ import StepDefinitions.TestRunner.TestRunner;
 import io.cucumber.java.en.*;
 import org.digivalet.Modules.LoginModule.LoginPage;
 
+import javax.mail.MessagingException;
+
 public class LoginModuleStepDef extends TestRunner {
 
     @Given("I am on login page")
@@ -20,7 +22,7 @@ public class LoginModuleStepDef extends TestRunner {
     }
 
     @And("I am entering OTP")
-    public void iAmEnteringOTP() throws InterruptedException {
+    public void iAmEnteringOTP() throws InterruptedException, MessagingException {
 
         LoginPage loginDriver = new LoginPage(driver);
         loginDriver.sendOTP();
