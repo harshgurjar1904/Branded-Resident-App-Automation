@@ -47,10 +47,14 @@ public class BaseClass extends AppiumUtils {
 		option.setDeviceName(deviceName);
 		option.setApp(appPath);
 		option.autoGrantPermissions();
+
 		driver= new AndroidDriver(service.getUrl(), option);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(duration));
+		// Start the emulator
+
 
 	}
+
 	
 	@AfterClass
 	public void tearDown() {

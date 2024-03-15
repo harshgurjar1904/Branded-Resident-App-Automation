@@ -5,6 +5,7 @@ import io.cucumber.java.en.*;
 import org.digivalet.Modules.LoginModule.LoginPage;
 
 import javax.mail.MessagingException;
+import java.io.IOException;
 
 public class LoginModuleStepDef extends TestRunner {
 
@@ -22,7 +23,7 @@ public class LoginModuleStepDef extends TestRunner {
     }
 
     @And("I am entering OTP")
-    public void iAmEnteringOTP() throws InterruptedException, MessagingException {
+    public void iAmEnteringOTP() throws InterruptedException, MessagingException, IOException {
 
         LoginPage loginDriver = new LoginPage(driver);
         loginDriver.sendOTP();
