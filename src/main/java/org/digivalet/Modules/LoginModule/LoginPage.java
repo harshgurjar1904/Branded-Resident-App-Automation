@@ -9,6 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 public class LoginPage extends ResidentAppUtils {
     AndroidDriver driver;
@@ -40,10 +41,10 @@ public class LoginPage extends ResidentAppUtils {
         loginButtonLocator.click();
     }
 
-    public void sendOTP() throws InterruptedException, MessagingException, IOException {
+    public void sendOTP(String username, String password) throws InterruptedException, MessagingException, IOException, GeneralSecurityException {
+        Thread.sleep(6000);
         OTPReader otpdriver= new OTPReader();
-        Thread.sleep(3000);
-        String otp=otpdriver.readOTPFromEmail();
+        String otp=otpdriver.readOTPFromEmail(username,password);
         System.out.println("Otp "+otp);
         otpFieldLocator.sendKeys(otp);
         Thread.sleep(25000);

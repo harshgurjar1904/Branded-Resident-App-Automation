@@ -6,6 +6,7 @@ import org.digivalet.Modules.LoginModule.LoginPage;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 
 public class LoginModuleStepDef extends TestRunner {
 
@@ -18,15 +19,15 @@ public class LoginModuleStepDef extends TestRunner {
     public void iAmEnteringEmailAddress() {
 
         LoginPage loginDriver = new LoginPage(driver);
-        loginDriver.sendEmailAddress(correctEmail);
+        loginDriver.sendEmailAddress(emailAddress);
 
     }
 
     @And("I am entering OTP")
-    public void iAmEnteringOTP() throws InterruptedException, MessagingException, IOException {
+    public void iAmEnteringOTP() throws InterruptedException, MessagingException, IOException, GeneralSecurityException {
 
         LoginPage loginDriver = new LoginPage(driver);
-        loginDriver.sendOTP();
+        loginDriver.sendOTP(emailAddress,password);
 
     }
 

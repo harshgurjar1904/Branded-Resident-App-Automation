@@ -19,12 +19,15 @@ public class BaseClass extends AppiumUtils {
 	public AppiumDriverLocalService service;
 	public static String path ="src/test/java/StepDefinitions/LoginModule/LoginTestData.json";
 	public static int n=0;
-	public static String correctEmail;
+	public static String emailAddress;
+	public static String password;
 
 	static {
         try {
-            correctEmail = getData(path,n,"emailAddress");
-        } catch (IOException e) {
+			emailAddress = getData(path,n,"emailAddress");
+			password = getData(path,n,"password");
+
+		} catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -39,7 +42,7 @@ public class BaseClass extends AppiumUtils {
 		String deviceName=prop.getProperty("deviceName1");
 		int duration=Integer.parseInt(prop.getProperty("duration"));
 		String appPath="Resources/base.apk";
-		String mainPath=prop.getProperty("mainpath");
+		String mainPath=prop.getProperty("mainpath2");
 
 
 		service=startAppiumServer(mainPath,ipAddress,portNo);
